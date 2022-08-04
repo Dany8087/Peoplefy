@@ -27,7 +27,7 @@ class BlogController extends Controller
         $image = $request->file('Blog_Images_Author_Photo')->store('public/CaseStudyImg');
     
         $blogs = new Blog();
-        dd(request()->all());
+        // dd(request()->all());
         $blogs->Blog_Title = $request->Blog_Title;
         $blogs->Blog_Created_by = $request->Blog_Created_by;
         $blogs->Blog_Type = $request->Blog_Type;
@@ -38,7 +38,7 @@ class BlogController extends Controller
         $blogs->Blog_Instagram = $request->Blog_Instagram;
         $blogs->Blog_Linkedin = $request->Blog_Linkedin;
     
-        $res = $case__studies->save();
+        $res = $blogs->save();
         
         if($res){
             return back()->with('success','Category added successfully');

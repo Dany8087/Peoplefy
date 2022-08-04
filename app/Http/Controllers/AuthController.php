@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Case_Study;
 
 class AuthController extends Controller
 {
     public function Peoplefy(){
+        $casestudydata = Case_Study::all();
         // $request->validate([
         //     'email'=>'required|email',
         //     'password'=>'required|min:6|max:12'
@@ -24,6 +26,6 @@ class AuthController extends Controller
         //     } else{
         //         return back()->with('fail', 'This email is not registered.');
         //     }
-            return view('AdminPanel.casestudylist');
+            return view('AdminPanel.casestudylist',['contractors'=>$casestudydata]);
     }
 }
