@@ -8,7 +8,8 @@ use App\Models\Blog;
 class BlogController extends Controller
 {
     public function bloglist(){
-        return view('AdminPanel.bloglist');
+        $blogdata = Blog::all();
+        return view('AdminPanel.bloglist',['blog'=>$blogdata]);
     }
 
     public function addblog(){
@@ -17,46 +18,52 @@ class BlogController extends Controller
 
     public function addingblog(Request $request){
         $request->validate([
-            'Blog_Title'=>'required',
-            'Blog_Created_by'=>'required',
-            'Blog_Type'=>'required',
-            'Blog_Images_Author_Photo'=>'mimes:jpg,png,jpeg|max:5048',
-            'Blog_Details'=>'max:100'
+            'Title'=>'required',
+            'Created_by'=>'required',
+            'Images_Author_Photo'=>'mimes:jpg,png,jpeg|max:5048',
+            'Details'=>'required'
         ]);
         
-        $image = $request->file('Blog_Images_Author_Photo')->store('public/CaseStudyImg');
+        $image = $request->file('Images_Author_Photo')->store('public/BlogImg');
     
         $blogs = new Blog();
-        // dd(request()->all());
-        $blogs->Blog_Title = $request->Blog_Title;
-        $blogs->Blog_Created_by = $request->Blog_Created_by;
-        $blogs->Blog_Type = $request->Blog_Type;
-        $blogs->Blog_Images_Author_Photo = $image;
-        $blogs->Blog_Details = $request->Blog_Details;
-        $blogs->Blog_Facebook = $request->Blog_Facebook;
-        $blogs->Blog_Twitter = $request->Blog_Twitter;
-        $blogs->Blog_Instagram = $request->Blog_Instagram;
-        $blogs->Blog_Linkedin = $request->Blog_Linkedin;
+        $blogs->Title = $request->Title;
+        $blogs->Created_by = $request->Created_by;
+        $blogs->Images_Author_Photo = $image;
+        $blogs->Details = $request->Details;
+        $blogs->Facebook = $request->Facebook;
+        $blogs->Twitter = $request->Twitter;
+        $blogs->Instagram = $request->Instagram;
+        $blogs->Linkedin = $request->Linkedin;
     
         $res = $blogs->save();
         
         if($res){
-            return back()->with('success','Category added successfully');
+            return back()->with('success','Blog added successfully');
         }else{
             return back()->with('fail', 'Something wrong');
         }
         // return view('AdminPanel.addblog');
     }
 
-    public function updateblog(){
-        return view('AdminPanel.updateblog');
+    public function updateblog($id){
+        $blogdata = Blog::find($id);
+        return view('AdminPanel.updateblog',['blog'=>$blogdata]);
     }
 
     public function updatingblog(){
         return view('AdminPanel.updateblog');
     }
 
-    public function blogdetails(){
-        return view('AdminPanel.blogdetails');
+    public function blogdetails($id){
+        $blogdata = Blog::find($id);
+        return view('AdminPanel.blogdetails',['blog'=>$blogdata]);
+    }
+
+    public function deleteblog($id){
+        $blogdata = Blog::find($id);
+        $blogdata->delete();
+        return redirect('bloglist');
     }
 }
+    

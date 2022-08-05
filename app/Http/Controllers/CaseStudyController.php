@@ -8,7 +8,8 @@ use App\Models\Case_Study;
 class CaseStudyController extends Controller
 {
     public function casestudylist(){
-        return view('AdminPanel.casestudylist');
+        $casestudydata = Case_Study::all();
+        return view('AdminPanel.casestudylist',['casestudy'=>$casestudydata]);
     }
 
     public function addcasestudy(){
@@ -17,31 +18,27 @@ class CaseStudyController extends Controller
 
     public function addingcasestudy(Request $request){
         $request->validate([
-            'Casestudy_Title'=>'required',
-            'Casestudy_Created_by'=>'required',
-            'Casestudy_Type'=>'required',
-            'Casestudy_Images_Author_Photo'=>'mimes:jpg,png,jpeg|max:5048',
-            'Casestudy_Details'=>'max:100'
+            'Title'=>'required',
+            'Created_by'=>'required',
+            'Images_Author_Photo'=>'mimes:jpg,png,jpeg|max:5048',
+            'Details'=>'required'
         ]);
         
-        $image = $request->file('Casestudy_Images_Author_Photo')->store('public/CaseStudyImg');
+        $image = $request->file('Images_Author_Photo')->store('public/CaseStudyImg');
     
         $case__studies = new Case_Study();
-        // dd(request()->all());
-        $case__studies->Casestudy_Title = $request->Casestudy_Title;
-        $case__studies->Casestudy_Created_by = $request->Casestudy_Created_by;
-        $case__studies->Casestudy_Type = $request->Casestudy_Type;
-        $case__studies->Casestudy_Images_Author_Photo = $image;
-        $case__studies->Casestudy_Details = $request->Casestudy_Details;
-        $case__studies->Casestudy_Facebook = $request->Casestudy_Facebook;
-        $case__studies->Casestudy_Twitter = $request->Casestudy_Twitter;
-        $case__studies->Casestudy_Instagram = $request->Casestudy_Instagram;
-        $case__studies->Casestudy_Linkedin = $request->Casestudy_Linkedin;
-    
+        $case__studies->Title = $request->Title;
+        $case__studies->Created_by = $request->Created_by;
+        $case__studies->Images_Author_Photo = $image;
+        $case__studies->Details = $request->Details;
+        $case__studies->Facebook = $request->Facebook;
+        $case__studies->Twitter = $request->Twitter;
+        $case__studies->Instagram = $request->Instagram;
+        $case__studies->Linkedin = $request->Linkedin;
         $res = $case__studies->save();
         
         if($res){
-            return back()->with('success','Category added successfully');
+            return back()->with('success','Case Study added successfully');
         }else{
             return back()->with('fail', 'Something wrong');
         }
@@ -49,15 +46,23 @@ class CaseStudyController extends Controller
         // return view('AdminPanel.addcasestudy');
     }
 
-    public function casestudydetails(){
-        return view('AdminPanel.casestudydetails');
+    public function casestudydetails($id){
+        $casestudydata = Case_Study::find($id);
+        return view('AdminPanel.casestudydetails',['casestudy'=>$casestudydata]);
     }
 
-    public function updatecasestudy(){
-        return view('AdminPanel.updatecasestudy');
+    public function updatecasestudy($id){
+        $casestudydata = Case_Study::find($id);
+        return view('AdminPanel.updatecasestudy',['casestudy'=>$casestudydata]);
     }
 
     public function updatingcasestudy(){
         return view('AdminPanel.updatecasestudy');
+    }
+
+    public function deletecasestudy($id){
+        $casestudydata = Case_Study::find($id);
+        $casestudydata->delete();
+        return redirect('casestudylist');
     }
 }

@@ -10,10 +10,10 @@
   <div id="content" class="ap-com content-wrapper"> 
     <!-- Sidebar start -->
     @include('Components.left_panel')
-    <div class="ap-com content-manger"> 
+    <div class="ap-com content-manger" style="background-image:url({{asset('images/bg_sm.png')}});"> 
       <!-- header start -->
       @include('Components.header')
-      <div class="ap-com container-main" style="background-image:url(images/bg_sm.png);">
+      <div class="ap-com container-main">
         <div class="row mb-4 align-items-center">
           <div class="col col-6">
             <div class="ap-com sm-com-heading">
@@ -37,20 +37,19 @@
                       <th scope="col">Sr.No</th>
                       <th scope="col" class="text-center">Blog Image</th>
                       <th scope="col">Blog Title</th>
-                      <th scope="col">Blog Type</th>
                       <th scope="col">Blog Created By</th>
                       <th scope="col">Blog Created Date</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($blog as $items)
                   <tr>
-                      <td class="text-center">1</td>
-                      <td class="text-center"><img src="images/blog-imgs/blog-img1.jpg" alt="" class="td_blog_img" /></td>
-                      <td>Sunt in culpa qui officia deserunt mollit animed kyest laborum</td>
-                      <td>Career guidance</td>
-                      <td>animed kyest</td>
-                      <td>Sep 02</td>
+                      <td class="text-center">{{$items['id']}}</td>
+                      <td class="text-center"><img src="{{ Storage::url($items->Images_Author_Photo) }}" alt="" class="td_blog_img" /></td>
+                      <td>{{$items['Title']}}</td>
+                      <td>{{$items['Created_by']}}</td>
+                      <td>{{$items['created_at']}}</td>
                       <td>
                           <div class="dropdown action-div">
                             <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,83 +57,15 @@
                             </div>
                             <!--//dropdown-toggle-->
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{{route('blogdetails')}}"><i class="fas fa-eye"></i> View</a></li>
-                              <li><a class="dropdown-item" href="{{route('updateblog')}}"><i class="fas fa-pencil-alt"></i> Edit</a></li>
+                              <li><a class="dropdown-item" href="{{'blogdetails/'.$items['id']}}"><i class="fas fa-eye"></i> View</a></li>
+                              <li><a class="dropdown-item" href="{{'updateblog/'.$items['id']}}"><i class="fas fa-pencil-alt"></i> Edit</a></li>
                               <!-- <li><hr class="dropdown-divider"></li> -->
-                              <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Delete</a></li>
+                              <li><a class="dropdown-item" href="{{'deleteblog/'.$items['id']}}"><i class="fas fa-trash-alt"></i> Delete</a></li>
                             </ul>
                           </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td class="text-center"><img src="images/blog-imgs/blog-img2.jpg" alt="" class="td_blog_img" /></td>
-                      <td>Sunt in culpa qui officia deserunt mollit animed kyest laborum</td>
-                      <td>Career guidance</td>
-                      <td>animed kyest</td>
-                      <td>Sep 02</td>
-                      <td>
-                          <div class="dropdown action-div">
-                            <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <!--//dropdown-toggle-->
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{{route('blogdetails')}}"><i class="fas fa-eye"></i> View</a></li>
-                              <li><a class="dropdown-item" href="{{route('updateblog')}}"><i class="fas fa-pencil-alt"></i> Edit</a></li>
-                              <!-- <li><hr class="dropdown-divider"></li> -->
-                              <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Delete</a></li>
-                            </ul>
-                          </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="text-center">3</td>
-                      <td class="text-center"><img src="images/blog-imgs/blog-img3.jpg" alt="" class="td_blog_img" /></td>
-                      <td>Sunt in culpa qui officia deserunt mollit animed kyest laborum</td>
-                      <td>Career guidance</td>
-                      <td>animed kyest</td>
-                      <td>Sep 02</td>
-                      <td>
-                          <div class="dropdown action-div">
-                            <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <!--//dropdown-toggle-->
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{{route('blogdetails')}}"><i class="fas fa-eye"></i> View</a></li>
-                              <li><a class="dropdown-item" href="{{route('updateblog')}}"><i class="fas fa-pencil-alt"></i> Edit</a></li>
-                              <!-- <li><hr class="dropdown-divider"></li> -->
-                              <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Delete</a></li>
-                            </ul>
-                          </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="text-center">4</td>
-                      <td class="text-center"><img src="images/blog-imgs/blog-img4.jpg" alt="" class="td_blog_img" /></td>
-                      <td>Sunt in culpa qui officia deserunt mollit animed kyest laborum</td>
-                      <td>Career guidance</td>
-                      <td>animed kyest</td>
-                      <td>Sep 02</td>
-                      <td>
-                          <div class="dropdown action-div">
-                            <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                            <!--//dropdown-toggle-->
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{{route('blogdetails')}}"><i class="fas fa-eye"></i> View</a></li>
-                              <li><a class="dropdown-item" href="{{route('updateblog')}}"><i class="fas fa-pencil-alt"></i> Edit</a></li>
-                              <!-- <li><hr class="dropdown-divider"></li> -->
-                              <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i> Delete</a></li>
-                            </ul>
-                          </div>
-                      </td>
-                    </tr>
-                    
+                    @endforeach
                   </tbody>
                 </table>
               </div>

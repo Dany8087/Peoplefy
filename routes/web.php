@@ -20,7 +20,12 @@ Route::get('/', function () {
     return view('Auth.index');
 });
 
-Route::post('/Peoplefy',[AuthController::class, 'Peoplefy']);
+
+
+Route::controller(AuthController::class)->group(function(){
+    Route::post('/Peoplefy', 'Peoplefy');
+    Route::get('/logout', 'logout')->name('logout');
+});
 
 
 
@@ -28,9 +33,10 @@ Route::controller(CaseStudyController::class)->group(function(){
     Route::get('/casestudylist', 'casestudylist')->name('casestudylist');
     Route::get('/addcasestudy',  'addcasestudy')->name('addcasestudy');
     Route::post('/addingcasestudy',  'addingcasestudy')->name('addingcasestudy');
-    Route::get('/updatecasestudy',  'updatecasestudy')->name('updatecasestudy');
+    Route::get('/updatecasestudy/{id}',  'updatecasestudy')->name('updatecasestudy/{id}');
     Route::post('/updatingcasestudy',  'updatingcasestudy')->name('updatingcasestudy');
-    Route::get('/casestudydetails',  'casestudydetails')->name('casestudydetails');
+    Route::get('/casestudydetails/{id}',  'casestudydetails')->name('casestudydetails/{id}');
+    Route::get('/deletecasestudy/{id}', 'deletecasestudy')->name('deletecasestudy');
 });
 
 
@@ -38,7 +44,8 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/bloglist', 'bloglist')->name('bloglist');
     Route::get('/addblog', 'addblog')->name('addblog');
     Route::post('/addingblog', 'addingblog')->name('addingblog');
-    Route::get('/updateblog', 'updateblog')->name('updateblog');
+    Route::get('/updateblog/{id}', 'updateblog')->name('updateblog/{id}');
     Route::post('/updatingblog', 'updatingblog')->name('updatingblog');
-    Route::get('/blogdetails', 'blogdetails')->name('blogdetails');
+    Route::get('/blogdetails/{id}', 'blogdetails')->name('blogdetails/{id}');
+    Route::get('/deleteblog/{id}', 'deleteblog')->name('deleteblog');
 });

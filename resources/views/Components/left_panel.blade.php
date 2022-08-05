@@ -1,5 +1,5 @@
 <nav id="sidebar" class="sidebar-panel">
-  <div class="logo-sidebar ap-com"> <a href="#"><img src="images/logo.png" > </a> </div>
+  <div class="logo-sidebar ap-com"> <a href="#"><img src="{{asset('images/logo.png')}}" > </a> </div>
   <!-- <div class="creatdiv ap-com"><a href=""><i class="fas fa-plus"></i>Create New</a></div> -->
   <div class="ap-com scroll-sidebar scrollbarbar">
     <ul class="list-unstyled components ap-com">

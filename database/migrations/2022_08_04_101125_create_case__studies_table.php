@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('case__studies', function (Blueprint $table) {
             $table->id();
-            $table->string('Casestudy_Title');
-            $table->string('Casestudy_Created_by');
-            $table->string('Casestudy_Type');
-            $table->string('Casestudy_Images_Author_Photo');
-            $table->string('Casestudy_Details')->nullable();
-            $table->string('Casestudy_Facebook')->nullable();
-            $table->string('Casestudy_Twitter')->nullable();
-            $table->string('Casestudy_Instagram')->nullable();
-            $table->string('Casestudy_Linkedin')->nullable();
+            $table->string('Title');
+            $table->string('Created_by');
+            $table->string('Images_Author_Photo');
+            $table->text('Details')->nullable();
+            $table->string('Facebook')->nullable();
+            $table->string('Twitter')->nullable();
+            $table->string('Instagram')->nullable();
+            $table->string('Linkedin')->nullable();
             $table->timestamps();
         });
     }

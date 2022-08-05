@@ -9,17 +9,17 @@
 <meta property="og:image" content="" />
 <meta property="og:description" content="" />
 <meta property="og:site_name" content="Peoplefy Admin Panel" />
-<link rel="canonical" href="http://Peoplefy.prometteur.in/admin" />
+<link rel="canonical" href="{{asset('http://Peoplefy.prometteur.in/admin')}}" />
 <title>Peoplefy Admin Panel</title>
-<link rel="shortcut icon" href="images/favicon-pfy.ico">
-<link rel="preload" href="fonts/flaticon.ttf" as="font" crossorigin>
-<link rel="preload" href="fonts/la-solid-900.woff2" as="font" crossorigin>
-<link rel="preload" href="fonts/la-brands-400.woff2" as="font" crossorigin>
-<link rel="preload" href="css/main.css" as="style">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/datatables.css">
-<link rel="stylesheet" href="css/fileinput.css">
-<link rel="stylesheet" href="css/theme.css" media="all"/>
-<link rel="stylesheet" href="css/ctrleditor.css">
-<link rel="preload" href="css/style.css" as="style">
-<link rel="stylesheet" href="css/style.css">
+<link rel="shortcut icon" href="{{asset('images/favicon-pfy.ico')}}">
+<link rel="preload" href="{{asset('fonts/flaticon.ttf')}}" as="font" crossorigin>
+<link rel="preload" href="{{asset('fonts/la-solid-900.woff2')}}" as="font" crossorigin>
+<link rel="preload" href="{{asset('fonts/la-brands-400.woff2')}}" as="font" crossorigin>
+<link rel="preload" href="{{asset('css/main.css')}}" as="style">
+<link rel="stylesheet" href="{{asset('css/main.css')}}">
+<link rel="stylesheet" href="{{asset('css/datatables.css')}}">
+<link rel="stylesheet" href="{{asset('css/fileinput.css')}}">
+<link rel="stylesheet" href="{{asset('css/theme.css')}}" media="all"/>
+<link rel="stylesheet" href="{{asset('css/ctrleditor.css')}}">
+<link rel="preload" href="{{asset('css/style.css')}}" as="style">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">

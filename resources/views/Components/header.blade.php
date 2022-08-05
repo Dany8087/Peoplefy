@@ -92,13 +92,13 @@
                       </ul>
         </li>-->
         <li class="img-li dropdown">
-          <a class="dropdown-toggle" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false"><img src="images/vector.jpg" alt="user photo" /></a>
+          <a class="dropdown-toggle" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('images/vector.jpg')}}" alt="user photo" /></a>
                       <ul class="dropdown-menu profile-ul" aria-labelledby="dropdownProfile">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> My Profile</a></li>
                         <!-- <li><a class="dropdown-item" href="#"><i class="fas fa-envelope-open-text"></i> Inbox</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Account Setting</a></li> -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
                       </ul>
         </li>
       </ul>

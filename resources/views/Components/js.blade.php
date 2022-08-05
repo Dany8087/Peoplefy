@@ -1,13 +1,13 @@
-<script src="js/main.js"></script>
-<script src="js/datatables.js"></script>
-<script src="js/swiper.js"></script>
-<script src="js/ctrleditor.js"></script>
-<script src="js/jquery.scrollbar.js"></script>
-<script src="js/sortable.js" type="text/javascript"></script> 
-<script src="js/fileinput.js" type="text/javascript"></script>
-<script src="js/theme.js" type="text/javascript"></script>
-<script src="js/jquery.twbsPagination.min.js"></script>
-<script src="js/ion.rangeSlider.min.js"></script>
+<script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('js/datatables.js')}}"></script>
+<script src="{{asset('js/swiper.js')}}"></script>
+<script src="{{asset('js/ctrleditor.js')}}"></script>
+<script src="{{asset('js/jquery.scrollbar.js')}}"></script>
+<script src="{{asset('js/sortable.js')}}" type="text/javascript"></script> 
+<script src="{{asset('js/fileinput.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/theme.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/jquery.twbsPagination.min.js')}}"></script>
+<script src="{{asset('js/ion.rangeSlider.min.js')}}"></script>
 <script>
   $(document).ready(function () {
   $('#sidebarCollapse').on('click', function () {
