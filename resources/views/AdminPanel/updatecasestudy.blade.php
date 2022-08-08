@@ -49,13 +49,11 @@
                   <textarea class="ckeditor form-control" name="Details" value="{{$casestudy->Details}}"></textarea>
                 </div>
               </div>
-              
             </div>
             <div class="row mb-4">
               <div class="col col-12 mb-3">
                 <h4 class="sub-title">Social medial</h4>
               </div>
-              
               <div class="col col-md-6 col-12 mb-3">
                 <div class="form-group">
                   <label class="form-label">Facebook</label>

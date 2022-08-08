@@ -244,7 +244,7 @@ background-color: #fff;z-index:1;}
 .login-box{/*background-color: #1A181F;*/border-radius:15px;padding:30px;}
 .login-box .form-group{position: relative;}
 .login-box .form-group .form-label{color: #000;font-size: 16px;margin-bottom: 10px;}
-.login-box .form-group .form-control{box-shadow:unset;background-color: transparent;border:1px solid #22539c;color: #EBEBEB;border-radius: 10px;height: 60px;padding: 10px;display: block;}
+.login-box .form-group .form-control{box-shadow:unset;background-color: transparent;border:1px solid #22539c;color: #black;border-radius: 10px;height: 60px;padding: 10px;display: block;}
 .login-box .form-group .form-control:hover,.login-box .form-group .form-control:focus{box-shadow:unset;background-color: transparent;border:2px solid #0f2951;}
 .login-box .form-group .form-control::-webkit-input-placeholder {color: #22539c;}
 .login-box .form-group .form-control:-moz-placeholder {color: #22539c; opacity:1;}

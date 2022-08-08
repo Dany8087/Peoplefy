@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-@include('components.css')
-</head>
-<body data-spy="scroll" data-target=".navbar-fixed-top" data-gr-c-s-loaded="true">
+<x-layout>
 <!-- loader -->
 <div class="wrapper"> 
   <div class="login-contianer"> 
@@ -16,14 +11,22 @@
             </div>
             <div class="login-form">
               <form action="/Peoplefy" method="post">
+              @if(Session::has('success'))
+              <div class="alert alert-success">{{Session::get('success')}}</div>
+              @endif
+              @if(Session::has('fail'))
+              <div class="alert alert-danger">{{Session::get('fail')}}</div>
+              @endif
                 @csrf
                 <div class="mb-4 form-group">
                   <label for="exampleFormControlInput1" class="form-label">Username / Email</label>
                   <input type="text" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+                  <span class="text-danger">@error('email') {{$message}} @enderror</span>
                 </div>
                 <div class="mb-4 form-group">
                   <label for="exampleFormControlInput2" class="form-label">Password</label>
                   <input type="password" class="form-control" name="password" id="exampleFormControlInput2" placeholder="********">
+                  <span class="text-danger">@error('password') {{$message}} @enderror</span>
                 </div>
 
                 <div class="submit-btn-div mt-5 text-center">
@@ -41,10 +44,5 @@
     <p>© Vennplay 2021</p>
   </div>
 </div>
-
-<!-- jQuery -->
-@include('components.js')
-
-</body>
-</html>
+</x-layout>
  
