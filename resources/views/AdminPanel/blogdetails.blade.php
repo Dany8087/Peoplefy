@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    @include('Components.css')
-</head>
-
-<body data-spy="scroll" data-target=".navbar-fixed-top" data-gr-c-s-loaded="true">
-    <!-- loader -->
-    <div class="wrapper">
-        <!-- ======== Header Section ======  -->
-        <div id="content" class="ap-com content-wrapper">
-            <!-- Sidebar start -->
-            @include('Components.left_panel')
-            <div class="ap-com content-manger" style="background-image:url({{asset('images/bg_sm.png')}});">
-                <!-- header start -->
-                @include('Components.header')
+<x-layout>
+      <!-- loader -->
+<div class="wrapper"> 
+  <!-- ======== Header Section ======  -->
+  <div id="content" class="ap-com content-wrapper"> 
+    <!-- Sidebar start -->
+    @include('components.left_panel')
+    <div class="ap-com content-manger" style="background-image:url({{asset('images/bg_sm.png')}});"> 
+      <!-- header start -->
+      @include('components.header')
                 <div class="ap-com container-main">
                     <div class="container">
                         <div class="row mb-4 align-items-center">
@@ -67,8 +60,4 @@
             </div>
         </div>
 
-        <!-- jQuery -->
-        @include('Components.js')
-</body>
-
-</html>
+</x-layout>

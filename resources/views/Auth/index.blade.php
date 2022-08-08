@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-@include('Components.css')
+@include('components.css')
 </head>
 <body data-spy="scroll" data-target=".navbar-fixed-top" data-gr-c-s-loaded="true">
 <!-- loader -->
@@ -43,7 +43,7 @@
 </div>
 
 <!-- jQuery -->
-@include('Components.js')
+@include('components.js')
 
 </body>
 </html>

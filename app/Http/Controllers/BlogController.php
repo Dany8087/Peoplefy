@@ -3,38 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\BlogPostRequest;
 use App\Models\Blog;
 
 class BlogController extends Controller
 {
-    public function bloglist(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $blogdata = Blog::all();
         return view('AdminPanel.bloglist',['blog'=>$blogdata]);
     }
 
-    public function addblog(){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         return view('AdminPanel.addblog');
     }
 
-    public function addingblog(Request $request){
-        $request->validate([
-            'Title'=>'required',
-            'Created_by'=>'required',
-            'Images_Author_Photo'=>'mimes:jpg,png,jpeg|max:5048',
-            'Details'=>'required'
-        ]);
-        
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(BlogPostRequest $request)
+    {
         $image = $request->file('Images_Author_Photo')->store('public/BlogImg');
-    
-        $blogs = new Blog();
-        $blogs->Title = $request->Title;
-        $blogs->Created_by = $request->Created_by;
+        $blogs = Blog::create($request->all());
         $blogs->Images_Author_Photo = $image;
-        $blogs->Details = $request->Details;
-        $blogs->Facebook = $request->Facebook;
-        $blogs->Twitter = $request->Twitter;
-        $blogs->Instagram = $request->Instagram;
-        $blogs->Linkedin = $request->Linkedin;
     
         $res = $blogs->save();
         
@@ -46,24 +51,53 @@ class BlogController extends Controller
         // return view('AdminPanel.addblog');
     }
 
-    public function updateblog($id){
-        $blogdata = Blog::find($id);
-        return view('AdminPanel.updateblog',['blog'=>$blogdata]);
-    }
-
-    public function updatingblog(){
-        return view('AdminPanel.updateblog');
-    }
-
-    public function blogdetails($id){
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
         $blogdata = Blog::find($id);
         return view('AdminPanel.blogdetails',['blog'=>$blogdata]);
     }
 
-    public function deleteblog($id){
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $blogdata = Blog::find($id);
+        return view('AdminPanel.updateblog',['blog'=>$blogdata]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $blogdata = Blog::find($id);
+        return view('AdminPanel.updateblog',['blog'=>$blogdata]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
         $blogdata = Blog::find($id);
         $blogdata->delete();
         return redirect('bloglist');
     }
 }
-    

@@ -18,34 +18,34 @@ use App\Http\Controllers\CaseStudyController;
 
 Route::get('/', function () {
     return view('Auth.index');
-});
+})->middleware('alreadyLoggedIn');
 
 
 
 Route::controller(AuthController::class)->group(function(){
-    Route::post('/Peoplefy', 'Peoplefy');
+    Route::post('/Peoplefy', 'Peoplefy')->middleware('alreadyLoggedIn');
     Route::get('/logout', 'logout')->name('logout');
 });
 
 
 
 Route::controller(CaseStudyController::class)->group(function(){
-    Route::get('/casestudylist', 'casestudylist')->name('casestudylist');
-    Route::get('/addcasestudy',  'addcasestudy')->name('addcasestudy');
-    Route::post('/addingcasestudy',  'addingcasestudy')->name('addingcasestudy');
-    Route::get('/updatecasestudy/{id}',  'updatecasestudy')->name('updatecasestudy/{id}');
-    Route::post('/updatingcasestudy',  'updatingcasestudy')->name('updatingcasestudy');
-    Route::get('/casestudydetails/{id}',  'casestudydetails')->name('casestudydetails/{id}');
-    Route::get('/deletecasestudy/{id}', 'deletecasestudy')->name('deletecasestudy');
+    Route::get('/casestudylist', 'index')->name('casestudylist')->middleware('isLoggedIn');
+    Route::get('/addcasestudy',  'create')->name('addcasestudy')->middleware('isLoggedIn');
+    Route::post('/addingcasestudy',  'store')->name('addingcasestudy')->middleware('isLoggedIn');
+    Route::get('/updatecasestudy/{id}',  'edit')->name('updatecasestudy')->middleware('isLoggedIn');
+    Route::post('/updatingcasestudy',  'update')->name('updatingcasestudy')->middleware('isLoggedIn');
+    Route::get('/casestudydetails/{id}',  'show')->name('casestudydetails')->middleware('isLoggedIn');
+    Route::get('/deletecasestudy/{id}', 'destroy')->name('deletecasestudy')->middleware('isLoggedIn');
 });
 
 
 Route::controller(BlogController::class)->group(function(){
-    Route::get('/bloglist', 'bloglist')->name('bloglist');
-    Route::get('/addblog', 'addblog')->name('addblog');
-    Route::post('/addingblog', 'addingblog')->name('addingblog');
-    Route::get('/updateblog/{id}', 'updateblog')->name('updateblog/{id}');
-    Route::post('/updatingblog', 'updatingblog')->name('updatingblog');
-    Route::get('/blogdetails/{id}', 'blogdetails')->name('blogdetails/{id}');
-    Route::get('/deleteblog/{id}', 'deleteblog')->name('deleteblog');
+    Route::get('/bloglist', 'index')->name('bloglist')->middleware('isLoggedIn');
+    Route::get('/addblog', 'create')->name('addblog')->middleware('isLoggedIn');
+    Route::post('/addingblog', 'store')->name('addingblog')->middleware('isLoggedIn');
+    Route::get('/updateblog/{id}', 'edit')->name('updateblog')->middleware('isLoggedIn');
+    Route::post('/updatingblog', 'update')->name('updatingblog')->middleware('isLoggedIn');
+    Route::get('/blogdetails/{id}', 'show')->name('blogdetails')->middleware('isLoggedIn');
+    Route::get('/deleteblog/{id}', 'destroy')->name('deleteblog')->middleware('isLoggedIn');
 });

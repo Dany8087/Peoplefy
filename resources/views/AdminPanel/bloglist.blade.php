@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-@include('Components.css')
-</head>
-<body data-spy="scroll" data-target=".navbar-fixed-top" data-gr-c-s-loaded="true">
-<!-- loader -->
+<x-layout>
+  <!-- loader -->
 <div class="wrapper"> 
   <!-- ======== Header Section ======  -->
   <div id="content" class="ap-com content-wrapper"> 
     <!-- Sidebar start -->
-    @include('Components.left_panel')
+    @include('components.left_panel')
     <div class="ap-com content-manger" style="background-image:url({{asset('images/bg_sm.png')}});"> 
       <!-- header start -->
-      @include('Components.header')
+      @include('components.header')
       <div class="ap-com container-main">
         <div class="row mb-4 align-items-center">
           <div class="col col-6">
@@ -55,11 +50,9 @@
                             <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                               <i class="fas fa-ellipsis-v"></i>
                             </div>
-                            <!--//dropdown-toggle-->
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="{{'blogdetails/'.$items['id']}}"><i class="fas fa-eye"></i> View</a></li>
                               <li><a class="dropdown-item" href="{{'updateblog/'.$items['id']}}"><i class="fas fa-pencil-alt"></i> Edit</a></li>
-                              <!-- <li><hr class="dropdown-divider"></li> -->
                               <li><a class="dropdown-item" href="{{'deleteblog/'.$items['id']}}"><i class="fas fa-trash-alt"></i> Delete</a></li>
                             </ul>
                           </div>
@@ -76,8 +69,4 @@
     </div>
   </div>
 </div>
-
-<!-- jQuery -->
-@include('Components.js')
-</body>
-</html>
+</x-layout>

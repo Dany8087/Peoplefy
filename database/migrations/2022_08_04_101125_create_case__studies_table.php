@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('Title');
             $table->string('Created_by');
-            $table->string('Images_Author_Photo');
+            $table->string('Images_Author_Photo')->default(1);
             $table->text('Details')->nullable();
             $table->string('Facebook')->nullable();
             $table->string('Twitter')->nullable();
